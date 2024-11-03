@@ -226,7 +226,6 @@ class Backbone(nn.Module):
         self.patch_num = int((self.lookback - self.patch_size)/self.stride + 1) + 1
         self.num_down_sample = configs.num_down
         self.patch_length = []
-        #  patch数量
         for i in range(self.num_down_sample + 1):
             self.patch_length.append(int(((self.lookback / (2**i)) - self.patch_size)/self.stride + 1) + 1)
         for _ in range(self.depth):
