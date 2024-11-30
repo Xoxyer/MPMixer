@@ -300,36 +300,10 @@ class Exp_Main(Exp_Basic):
                     if 'Linear' in self.args.model or 'TST' in self.args.model or 'Mixer' in self.args.model or 'P_' in self.args.model:
                         torch.cuda.synchronize()
                         start = time.time()
-                        outputs, attn, score = self.model(batch_x)
-                        ##热力图可视化
-
-                        # a = attn[0, 0, :].cpu()
-                        # a = a.detach().numpy()
-                        # plt.figure(figsize=(6, 6))
-                        # plt.xticks(ticks=np.arange(22), labels=np.arange(1, 23))
-                        # plt.yticks(ticks=np.arange(22), labels=np.arange(1, 23))
-                        #
-                        # plt.imshow(a, cmap='hot_r', interpolation='nearest')
-                        # cbar = plt.colorbar(shrink=0.8)
-                        # cbar.set_label('Weight')
-                        # plt.show()
-                        # # 将它们堆叠成一个二维数组
-                        # data_matrix = np.stack(a)
-                        #
-                        # # 计算Pearson相关系数
-                        # correlation_matrix = np.corrcoef(data_matrix)
-                        #
-                        # # 绘制热力图
-                        # plt.figure(figsize=(15, 12))
-                        # sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0,
-                        #             xticklabels=[f'Array {i}' for i in range(22)],
-                        #             yticklabels=[f'Array {i}' for i in range(22)])
-                        # plt.title('Pearson Correlation Coefficient Heatmap')
-                        # plt.show()
+                        outputs, attn, score = self.model(batch_x)    
 
                         torch.cuda.synchronize()
                         end = time.time()
-                        # batch_sum += 1
                         infer_time_sum = infer_time_sum + (end - start)
                     else:
                         if self.args.output_attention:
