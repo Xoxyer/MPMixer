@@ -28,7 +28,7 @@ do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --enc_in 7 \
-      --tra_layers 2 \
+      --tra_layers 1 \
       --n_heads 16 \
       --d_model 256 \
       --d_ff 2048 \
